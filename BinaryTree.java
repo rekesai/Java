@@ -245,4 +245,59 @@ public class BinaryTree {
         return newRoot;
     }
 
+
+    //判断两棵树其中一颗是不是另一颗的子树
+    public boolean isSubtree(Node root, Node subRoot) {
+        if(root == null) return false;
+
+        if(isSameTree(root,subRoot))  return true;
+
+        if(isSubtree(root.left,subRoot)) return true;
+
+        if(isSubtree(root.right,subRoot)) return true;
+
+        return false;
+    }
+
+    //判断是不是平衡二叉树
+    public boolean isBalance(Node root){
+        if(root == null) return true;
+        int leftHeight = getHeight(root.left);
+        int rightHeight = getHeight(root.right);
+        return Math.abs(leftHeight - rightHeight) < 2 &&
+                isBalance(root.left) && isBalance(root.right);
+    }
+
+
+    //判断一棵树是不是完全二叉树
+    public boolean isCompleteTree(Node root){
+        if(root == null) return true;
+        //创建队列，root入队
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        //出队，不是空就放左右孩子
+        while(!queue.isEmpty()){
+            Node cur = queue.poll();
+            if(cur != null){
+                queue.offer(root.left);
+                queue.offer(root.right);
+            }
+            else{
+                break;
+            }
+        }
+        //再判断，若全是空则返回true，若一旦在null之间存在节点，则返回false
+        while(!queue.isEmpty()){
+            Node cur = queue.poll();
+            if(cur != null){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    //给一段二叉树先序字符串序列，按照其顺序构造二叉树
+
+
 }
