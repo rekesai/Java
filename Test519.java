@@ -1,7 +1,7 @@
 import java.util.*;
 
 
-public class MapSetTest {
+public class Test519 {
     /**
      * 给你一个长度为 n 的链表，每个节点包含一个额外增加的随机指针 random ，该指针可以指向链表中的任何节点或空节点。
      * 构造这个链表的深拷贝。深拷贝应该正好由 n个全新节点组成，其中每个新节点的值都设为其对应的原节点的值。
